@@ -1,29 +1,59 @@
 # Decay computation
 
-### The goal of this project is to compute the End Of Beam (EOB) individual activity of a mix of isotopes produced by a cyclotron.
+## Purpose
 
-You need to record the activity at different times after the production (EOB : t=0min).
+This project computes the **End Of Beam (EOB)** individual activity of a mix of isotopes produced by a cyclotron.
 
-You can enter as many values as possible (more than 7) in the excel file <ins> _decay.xlsx_ </ins>
+## Usage
 
-![Alt text](images/readme_pic_1.jpg)
+### 1. Data Input
 
-The program will try to find a solution with multiple common isotopes.
+Record the measured activity at different times after the end of production (**EOB : t = 0 min**).  
+Enter your data in the Excel file: **`decay.xlsx`**.  
+You can input as many values as you like (more than 7 is recommended).
 
-You can change the isotope list by checking the box in the same excel file. You can also add new isotopes (keep the same syntax!).
+![Data input example](images/readme_pic_1.jpg)
 
-![Alt text](images/readme_pic_2.jpg)
+---
 
-The algorithm will find solutions with negative amounts of activity. It will iterate and remove those one by one. 
-In the <ins> _result.txt_ </ins> file, you can find the different iterations. 
+### 2. Isotope Selection
 
-![Alt text](images/readme_pic_3.jpg)
+The program attempts to identify contributing isotopes from a predefined list of common isotopes.  
+You can customize the list directly in **`decay.xlsx`** by checking/unchecking boxes or adding new isotopes (make sure to follow the existing syntax).
 
-It will then compute the theoretical decay of those isotopes and compute the error with the measured values. 
-The final result will be displayed on a local webpage under the url _http://127.0.0.1:55966/_
+![Isotope selection example](images/readme_pic_2.jpg)
 
-![Alt text](images/readme_pic_4.jpg)
+---
 
+### 3. Computation Algorithm
 
-The program can be executed via <ins> _decay.exe_ </ins> but you can also check the source code  <ins> _decay.py_ </ins>.
-Don't hesitate to contact me if you get wrong results or if you have suggestions. 
+The algorithm iteratively finds the most fitting solution. If negative activity values are found, they are removed one by one.  
+Each iteration is logged in **`result.txt`**.
+
+![Iteration log example](images/readme_pic_3.jpg)
+
+---
+
+### 4. Final Results
+
+The program computes the theoretical decay curves of the final isotopes and compares them with the measured values.  
+Final results are displayed on a local webpage at:
+
+http://localhost:127.0.0.1:56146/
+
+![Final result example](images/readme_pic_4.jpg)
+
+---
+
+## Execution
+
+You can run the program using:
+
+- The Windows executable: **`decay.exe`**
+- Or the Python source code: **`decay.py`**
+
+---
+
+## Feedback
+
+If you encounter incorrect results or have suggestions for improvement, feel free to contact me.
