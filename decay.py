@@ -13,7 +13,7 @@ import os
 #----------------------------------------------------
 #
 # TODO: 
-# - Add isotopes in excel file with boxes to tick to unselect them -> create a hidden list for python
+# - Add isotopes in excel file with boxes to tick to unselect them
 # - Add graph with iterations and N0 of each isotope with error from decay data
 # - Better readme with pictures
 #
@@ -21,10 +21,6 @@ import os
 
 # Initializing the app
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-
-#isotopes_list  = np.array(["N13", "Ga66", "Ga67", "Ga68", "F18", "C11", "Cu64"])
-#halflives_list = np.array([9.965, 569.4, 4695.6, 67.71, 109.7, 20.34, 762])
-#lambda_list    = np.log(2) / halflives_list
 
 def open_browser():
     webbrowser.open_new("http://127.0.0.1:8050/")
@@ -113,6 +109,8 @@ def main():
 
     time_measured_list, activity_measured_list, isotopes_list, halflives_list, lambda_list = import_excel()
     file_result = open("result.txt", "w")
+    log_length = 30 # Max expected number of iterations
+    log_A0 = np.zeros((np.size(isotopes_list), log_length), dtype=float)
 
     #--------------------
 
@@ -163,7 +161,9 @@ def main():
         #--------------------
         # Result log
 
-        
+        for i in range(np.size(A_0)):
+            log_A0[np.where(isotopes_list == isotopes[i]), iteration-1] = A_0[i]
+
         str_intro = str("---- Iteration " + str(iteration) + " : Activity EOB ---- \n" + 
                         "Mean error : " + "{:.2f}".format(e_mean) + "% \n" + 
                         "Worse error : " + "{:.2f}".format(np.max(e_array)) + "% \n\n")
@@ -181,21 +181,24 @@ def main():
     
     #--------------------
 
-    fig = go.Figure()
+    fig = make_subplots(rows=2, cols=1, subplot_titles=("Decay over time", "Iterations"))
 
-    fig.add_trace(go.Scatter(x=time_measured_list, y=activity_measured_list, name="Measures", mode ="markers"))
-    fig.add_trace(go.Scatter(x=t, y=A_extrapolate_tot, name="Total", mode ="lines"))
+    fig.add_trace(go.Scatter(x=time_measured_list, y=activity_measured_list, name="Measures", mode ="markers"), row=1, col=1)
+    fig.add_trace(go.Scatter(x=t, y=A_extrapolate_tot, name="Total", mode ="lines"), row=1, col=1)
     for i in range(num_eq):
-        fig.add_trace(go.Scatter(x=t, y=A_extrapolate[i], name=isotopes[i], mode ="lines"))
+        fig.add_trace(go.Scatter(x=t, y=A_extrapolate[i], name=isotopes[i], mode ="lines"), row=1, col=1)
 
     fig.update_layout(
             xaxis = dict(title=dict(text="Time [min]")),
             yaxis = dict(title=dict(text="Activity [mCi]")),
             legend=dict(yanchor="top", y=0.99, xanchor="right", x=0.99),
-            title_text="Decay over time")
+            height=1800)
+
+    for i in range(np.shape(log_A0)[0]):
+        fig.add_trace(go.Scatter(x=np.arange(1, iteration, 1), y=log_A0[i], name="Measures", mode ="lines"), row=2, col=1)
     
     file_result.close()
-    fig.show()  
+    fig.show()
 
 #----------------------------------------------------
 
