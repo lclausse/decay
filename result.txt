@@ -1,0 +1,30 @@
+---- Iteration 1 : Activity EOB ---- 
+Mean error : 3.27% 
+Worse error : 7.50% 
+
+Ga66 : 1300575.21 [mCi] 
+Ga67 : 371658.74 [mCi] 
+F18 : -26886.50 [mCi] 
+C11 : 2403.18 [mCi] 
+Cu64 : -1646606.93 [mCi] 
+
+
+---- Iteration 2 : Activity EOB ---- 
+Mean error : 9.04% 
+Worse error : 19.87% 
+
+Ga66 : 5436.36 [mCi] 
+Ga67 : -3833.68 [mCi] 
+F18 : -1908.46 [mCi] 
+C11 : 1334.48 [mCi] 
+
+
+---- Iteration 3 : Activity EOB ---- 
+Mean error : 17.16% 
+Worse error : 40.53% 
+
+Ga66 : 33.10 [mCi] 
+F18 : 11.58 [mCi] 
+C11 : 897.32 [mCi] 
+
+
