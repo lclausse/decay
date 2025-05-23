@@ -11,13 +11,6 @@ import numpy as np
 import os
 
 #----------------------------------------------------
-#
-# TODO: 
-# - OK - Add isotopes in excel file with boxes to tick to unselect them
-# - NO - Add graph with iterations and N0 of each isotope with error from decay data
-# - Better readme with pictures
-#
-#----------------------------------------------------
 
 # Initializing the app
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
