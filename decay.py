@@ -11,13 +11,20 @@ import numpy as np
 import os
 
 #----------------------------------------------------
+#
+# TODO: 
+# - Add isotopes in excel file with boxes to tick to unselect them -> create a hidden list for python
+# - Add graph with iterations and N0 of each isotope with error from decay data
+# - Better readme with pictures
+#
+#----------------------------------------------------
 
 # Initializing the app
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-isotopes_list  = np.array(["N13", "Ga66", "Ga67", "Ga68", "F18", "C11", "Cu64"])
-halflives_list = np.array([9.965, 569.4, 4695.6, 67.71, 109.7, 20.34, 762])
-lambda_list    = np.log(2) / halflives_list
+#isotopes_list  = np.array(["N13", "Ga66", "Ga67", "Ga68", "F18", "C11", "Cu64"])
+#halflives_list = np.array([9.965, 569.4, 4695.6, 67.71, 109.7, 20.34, 762])
+#lambda_list    = np.log(2) / halflives_list
 
 def open_browser():
     webbrowser.open_new("http://127.0.0.1:8050/")
@@ -28,33 +35,40 @@ def import_excel():
 
     try :
         data_excel = pd.read_excel('decay.xlsx')
-        time     = data_excel["time [min]"].to_numpy()
-        activity = data_excel["Activity [mCi]"].to_numpy()
+        time_raw     = data_excel["time [min]"].to_numpy()
+        activity_raw = data_excel["Activity [mCi]"].to_numpy()
+        
+        selected_raw  = data_excel["Enabled"].to_numpy()
+        isotopes_raw  = data_excel["Isotope"].to_numpy()
+        halflives_raw = data_excel["t_1/2 [min]"].to_numpy()
 
-        time_measured_list = np.empty([0])
+        time_measured_list     = np.empty([0])
         activity_measured_list = np.empty([0])
-
-        for i in range(len(activity)):
-            if not np.isnan(activity[i]):
-                time_measured_list = np.append(time_measured_list, [time[i]])
-                activity_measured_list = np.append(activity_measured_list, [activity[i]])
-                
+        isotopes_list          = np.empty([0])
+        halflives_list         = np.empty([0])
+        
+        for i in range(len(activity_raw)):
+            if not np.isnan(activity_raw[i]):
+                time_measured_list = np.append(time_measured_list, [time_raw[i]])
+                activity_measured_list = np.append(activity_measured_list, [activity_raw[i]])
+        
+        for i, selected in enumerate(selected_raw):
+            if selected == 1:
+                isotopes_list = np.append(isotopes_list, isotopes_raw[i])
+                halflives_list = np.append(halflives_list, halflives_raw[i])
+        lambda_list    = np.log(2) / halflives_list
+        
     except:
         print("No decay Excel file found.")
         return 0
 
-    return time_measured_list, activity_measured_list
+    return time_measured_list, activity_measured_list, isotopes_list, halflives_list, lambda_list
 
 #----------------------------------------------------
 
-def compute_matrices(selected_isotopes_bool, time_measured_list, activity_measured_list):
+def compute_matrices(isotopes, lambda_, time_measured_list, activity_measured_list):
 
-    isotopes  = isotopes_list[selected_isotopes_bool]
-    lambda_   = lambda_list[selected_isotopes_bool]
     num_eq = np.size(isotopes)
-
-    #--------------------
-
     time_start = 0
     time_end   = time_measured_list[-1]
     time_close = np.linspace(time_start, time_end, num_eq)
@@ -97,7 +111,7 @@ def compute_matrices(selected_isotopes_bool, time_measured_list, activity_measur
 
 def main():
 
-    time_measured_list, activity_measured_list = import_excel()
+    time_measured_list, activity_measured_list, isotopes_list, halflives_list, lambda_list = import_excel()
     file_result = open("result.txt", "w")
 
     #--------------------
@@ -115,7 +129,7 @@ def main():
         #--------------------  
         # Matrices resolution
 
-        N_0, A_0 = compute_matrices(selected_isotopes_bool, time_measured_list, activity_measured_list)
+        N_0, A_0 = compute_matrices(isotopes, lambda_, time_measured_list, activity_measured_list)
         iteration += 1
 
         index_activity_min = np.argmin(A_0)

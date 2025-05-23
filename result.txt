@@ -1,63 +1,42 @@
 ---- Iteration 1 : Activity EOB ---- 
-Mean error : 1.20% 
-Worse error : 6.31% 
+Mean error : 1.31% 
+Worse error : 6.40% 
 
-N13 : 1798.60 [mCi] 
-Ga66 : 2615730.38 [mCi] 
-Ga67 : 670658.48 [mCi] 
-Ga68 : 44827.77 [mCi] 
-F18 : -123939.07 [mCi] 
-C11 : -2062.14 [mCi] 
-Cu64 : -3205562.54 [mCi] 
+N13 : 1451.13 [mCi] 
+Ga66 : -135400.94 [mCi] 
+Ga67 : -37713.49 [mCi] 
+F18 : 3364.46 [mCi] 
+C11 : -411.99 [mCi] 
+Cu64 : 170129.44 [mCi] 
 
 
 ---- Iteration 2 : Activity EOB ---- 
-Mean error : 1.31% 
-Worse error : 6.39% 
+Mean error : 1.24% 
+Worse error : 6.68% 
 
-N13 : 1471.98 [mCi] 
-Ga66 : 3388.12 [mCi] 
-Ga67 : -2099.02 [mCi] 
-Ga68 : 2330.13 [mCi] 
-F18 : -3166.12 [mCi] 
-C11 : -504.36 [mCi] 
+N13 : 1206.97 [mCi] 
+Ga67 : 541.57 [mCi] 
+F18 : 383.07 [mCi] 
+C11 : -42.34 [mCi] 
+Cu64 : -729.85 [mCi] 
 
 
 ---- Iteration 3 : Activity EOB ---- 
-Mean error : 1.26% 
-Worse error : 6.67% 
+Mean error : 1.74% 
+Worse error : 6.77% 
 
-N13 : 1223.26 [mCi] 
-Ga66 : -114.19 [mCi] 
-Ga67 : 85.20 [mCi] 
-Ga68 : 248.43 [mCi] 
-C11 : -80.52 [mCi] 
+N13 : 1129.50 [mCi] 
+Ga67 : -29.00 [mCi] 
+F18 : 180.61 [mCi] 
+C11 : 59.75 [mCi] 
 
 
 ---- Iteration 4 : Activity EOB ---- 
-Mean error : 1.51% 
-Worse error : 6.64% 
+Mean error : 9.85% 
+Worse error : 24.49% 
 
-N13 : 1225.99 [mCi] 
-Ga67 : -2.59 [mCi] 
-Ga68 : 206.95 [mCi] 
-C11 : -63.99 [mCi] 
-
-
----- Iteration 5 : Activity EOB ---- 
-Mean error : 1.86% 
-Worse error : 6.81% 
-
-N13 : 1143.02 [mCi] 
-Ga67 : -0.65 [mCi] 
-Ga68 : 195.04 [mCi] 
-
-
----- Iteration 6 : Activity EOB ---- 
-Mean error : 1.62% 
-Worse error : 6.78% 
-
-N13 : 1149.57 [mCi] 
-Ga68 : 191.44 [mCi] 
+N13 : 494.35 [mCi] 
+F18 : 93.64 [mCi] 
+C11 : 527.89 [mCi] 
 
 
