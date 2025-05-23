@@ -13,8 +13,8 @@ import os
 #----------------------------------------------------
 #
 # TODO: 
-# - Add isotopes in excel file with boxes to tick to unselect them
-# - Add graph with iterations and N0 of each isotope with error from decay data
+# - OK - Add isotopes in excel file with boxes to tick to unselect them
+# - NO - Add graph with iterations and N0 of each isotope with error from decay data
 # - Better readme with pictures
 #
 #----------------------------------------------------
@@ -161,6 +161,7 @@ def main():
         #--------------------
         # Result log
 
+        # If I want to add a graph for the iterations
         for i in range(np.size(A_0)):
             log_A0[np.where(isotopes_list == isotopes[i]), iteration-1] = A_0[i]
 
@@ -181,22 +182,19 @@ def main():
     
     #--------------------
 
-    fig = make_subplots(rows=2, cols=1, subplot_titles=("Decay over time", "Iterations"))
+    fig = go.Figure()
 
-    fig.add_trace(go.Scatter(x=time_measured_list, y=activity_measured_list, name="Measures", mode ="markers"), row=1, col=1)
-    fig.add_trace(go.Scatter(x=t, y=A_extrapolate_tot, name="Total", mode ="lines"), row=1, col=1)
+    fig.add_trace(go.Scatter(x=time_measured_list, y=activity_measured_list, name="Measures", mode ="markers"))
+    fig.add_trace(go.Scatter(x=t, y=A_extrapolate_tot, name="Total", mode ="lines"))
     for i in range(num_eq):
-        fig.add_trace(go.Scatter(x=t, y=A_extrapolate[i], name=isotopes[i], mode ="lines"), row=1, col=1)
+        fig.add_trace(go.Scatter(x=t, y=A_extrapolate[i], name=isotopes[i], mode ="lines"))
 
     fig.update_layout(
             xaxis = dict(title=dict(text="Time [min]")),
             yaxis = dict(title=dict(text="Activity [mCi]")),
             legend=dict(yanchor="top", y=0.99, xanchor="right", x=0.99),
-            height=1800)
+            title="Decay over time")
 
-    for i in range(np.shape(log_A0)[0]):
-        fig.add_trace(go.Scatter(x=np.arange(1, iteration, 1), y=log_A0[i], name="Measures", mode ="lines"), row=2, col=1)
-    
     file_result.close()
     fig.show()
 
