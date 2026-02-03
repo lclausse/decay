@@ -64,18 +64,15 @@ $$A_{\mathrm{total}}(t)=\sum_{i=1}^n A_{0,i} e^{-\lambda_i t}$$
 
 By measuring the total activity at different times $t_1,t_2,\dots ,t_m$, you obtain a system of equations: \
 
-$$ \left{ \begin{array}{l}\textstyle A_{\mathrm{total}}(t_1)=\sum_i A_{0,i} e^{-\lambda_i t_1}\\ \textstyle A_{\mathrm{total}}(t_2)=\sum_i A_{0,i} e^{-\lambda_i t_2}\\ \textstyle \vdots \\ \textstyle A_{\mathrm{total}}(t_m)=\sum_i A_{0,i} e^{-\lambda_i t_m}\end{array} \right} $$
+$$\left{ \begin{array}{l}\textstyle A_{\mathrm{total}}(t_1)=\sum_i A_{0,i} e^{-\lambda_i t_1}\\ \textstyle A_{\mathrm{total}}(t_2)=\sum_i A_{0,i} e^{-\lambda_i t_2}\\ \textstyle \vdots \\ \textstyle A_{\mathrm{total}}(t_m)=\sum_i A_{0,i} e^{-\lambda_i t_m}\end{array} \right}$$
 
 
 Other \
-$$
-\begin{cases}
+$$\begin{cases}
 A_{\text{total}}(t_1) = \sum_{i=1}^{n} A_{0,i}\, e^{-\lambda_i t_1} \\
 A_{\text{total}}(t_2) = \sum_{i=1}^{n} A_{0,i}\, e^{-\lambda_i t_2} \\
 \vdots \\
-A_{\text{total}}(t_m) = \sum_{i=1}^{n} A_{0,i}\, e^{-\lambda_i t_m}
-\end{cases}
-$$
+A_{\text{total}}(t_m) = \sum_{i=1}^{n} A_{0,i}\, e^{-\lambda_i t_m}\end{cases}$$
 
 
 
