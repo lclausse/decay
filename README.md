@@ -51,8 +51,8 @@ The activity $A(t)$ (number of decays per second) of an individual isotope at ti
 $$A(t)=\lambda N(t)$$
 
 where:
-- $\lambda$  is the decay constant of the isotope
-- $N(t)$ is the number of atoms present at time $t$
+- $\lambda$  is the decay constant of the isotope.
+- $N(t)$ is the number of atoms present at time $t$.
 
 The number of atoms evolves according to the radioactive decay law:
 
@@ -71,17 +71,6 @@ If the sample contains several independent isotopes, each with its own decay con
 $$A_{\mathrm{total}}(t)=\sum_{i=1}^n A_{0,i} e^{-\lambda_i t}$$
 
 By measuring the total activity at different times $t_1,t_2,\dots ,t_m$, you obtain a system of equations: 
-
-$$
-\left\{ 
-    \begin{array}{l}
-    \textstyle A_{\mathrm{total}}(t_1)=\sum_i A_{0,i} e^{-\lambda_i t_1}\\ 
-    \textstyle A_{\mathrm{total}}(t_2)=\sum_i A_{0,i} e^{-\lambda_i t_2}\\ 
-    \textstyle \vdots \\ 
-    \textstyle A_{\mathrm{total}}(t_m)=\sum_i A_{0,i} e^{-\lambda_i t_m}
-    \end{array} 
-\right.
-$$
 
 $$
 \begin{cases}
