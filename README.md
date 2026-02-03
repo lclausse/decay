@@ -44,6 +44,10 @@ You can run the program using:
 - The Windows executable: **`decay.exe`**
 - Or the Python source code: **`decay.py`**
 
+## Equations
+
+
+
 ## Feedback
 
 If you encounter incorrect results or have suggestions for improvement, feel free to contact me.
