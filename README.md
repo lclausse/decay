@@ -47,36 +47,41 @@ You can run the program using:
 ## Equations
 
 The activity $A(t)$ (number of decays per second) of an individual isotope at time $t$ is defined as: \
+
 $$A(t)=\lambda N(t)$$ \
+
 where:
 - $\lambda$  is the decay constant of the isotope
 - $N(t)$ is the number of atoms present at time $t$
 
 The number of atoms evolves according to the radioactive decay law: \
+
 $$N(t)=N_0\, e^{-\lambda t}$$ \
+
 Combining both expressions gives the activity as a function of time: \
+
 $$A(t)=A_0\, e^{-\lambda t}$$ \
+
 with $A_0=\lambda N_0$ the initial activity. \
+
 <ins>**Multiple isotopes**</ins> \
+
 If the sample contains several independent isotopes, each with its own decay constant $\lambda_i$ and initial activity $A_{0,i}$, the total activity at time t is: 
 
 $$A_{\mathrm{total}}(t)=\sum_{i=1}^n A_{0,i} e^{-\lambda_i t}$$
 
 By measuring the total activity at different times $t_1,t_2,\dots ,t_m$, you obtain a system of equations: 
 
-$$ T(t) $$
-
-$$\left{ \begin{array}{l}\textstyle A_{\mathrm{total}}(t_1)=\sum_i A_{0,i} e^{-\lambda_i t_1}\\ \textstyle A_{\mathrm{total}}(t_2)=\sum_i A_{0,i} e^{-\lambda_i t_2}\\ \textstyle \vdots \\ \textstyle A_{\mathrm{total}}(t_m)=\sum_i A_{0,i} e^{-\lambda_i t_m}\end{array} \right}$$
-
-
-Other \
-$$\begin{cases}
-A_{\text{total}}(t_1) = \sum_{i=1}^{n} A_{0,i}\, e^{-\lambda_i t_1} \\
-A_{\text{total}}(t_2) = \sum_{i=1}^{n} A_{0,i}\, e^{-\lambda_i t_2} \\
-\vdots \\
-A_{\text{total}}(t_m) = \sum_{i=1}^{n} A_{0,i}\, e^{-\lambda_i t_m}\end{cases}$$
-
-
+$$
+\left\{ 
+    \begin{array}{l}
+    \textstyle A_{\mathrm{total}}(t_1)=\sum_i A_{0,i} e^{-\lambda_i t_1}\\ 
+    \textstyle A_{\mathrm{total}}(t_2)=\sum_i A_{0,i} e^{-\lambda_i t_2}\\ 
+    \textstyle \vdots \\ 
+    \textstyle A_{\mathrm{total}}(t_m)=\sum_i A_{0,i} e^{-\lambda_i t_m}
+    \end{array} 
+\right.
+$$
 
 Solving this system yields the unknown initial activities $A_{0,i}$.
 
