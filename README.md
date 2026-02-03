@@ -48,7 +48,7 @@ You can run the program using:
 
 The activity $A(t)$ (number of decays per second) of an individual isotope at time $t$ is defined as:
 
-$$A(t)=\lambda . N(t)$$
+$$A(t)=\lambda.N(t)$$
 
 where:
 - $\lambda$  is the decay constant of the isotope.
@@ -56,13 +56,13 @@ where:
 
 The number of atoms evolves according to the radioactive decay law:
 
-$$N(t)=N_0 . e^{-\lambda t}$$
+$$N(t)=N_0.e^{-\lambda t}$$
 
 Combining both expressions gives the activity as a function of time:
 
-$$A(t)=A_0 . e^{-\lambda t}$$
+$$A(t)=A_0.e^{-\lambda t}$$
 
-with $A_0=\lambda . N_0$ the initial activity.
+with $A_0=\lambda.N_0$ the initial activity.
 
 <ins>**Multiple isotopes**</ins>
 
